@@ -33,38 +33,29 @@ public class movii {
                 "7 == Most Active User\n" + "8 == Top 5 Movies By User's interest\n");
         int choice= sc3.nextInt();
 
-
-        Scanner sc2 = new Scanner(System.in);    //System.in is a standard input stream
-
         if(choice ==1) {
             System.out.print("Enter Genre id- \n");
-            System.out.println("0: unknown | 1: Action | 2: Adventure | 3: Animation |" +
-                    " 4: Children's | 5: Comedy | 6: Crime | 7:Documentary | 8:Drama | 9:Fantasy |\n" +
-                    "       10:Film-Noir | 11:Horror | 12:Musical | 13:Mystery | 14:Romance | 15:Sci-Fi |" +
-                    " 16:Thriller | 17:War | 18:Western |");
-            int gen = sc2.nextInt();
-             Movie movie=movi.service.TopMovie.topMovieByGenre(gen,movieList,ratingList);
+            System.out.println("0: unknown | 1: Action | 2: Adventure | 3: Animation |" + " 4: Children's | 5: Comedy | 6: Crime | 7:Documentary | 8:Drama | 9:Fantasy |\n" + "       10:Film-Noir | 11:Horror | 12:Musical | 13:Mystery | 14:Romance | 15:Sci-Fi |" + " 16:Thriller | 17:War | 18:Western |");
+            int genreId = sc3.nextInt();
+             Movie movie=movi.service.TopMovie.topMovieByGenre(genreId,movieList,ratingList);
              System.out.println(movie.getMovieId()+ " "+movie.getMovieTitle());
         }
 
         if(choice ==2) {
             System.out.print("Enter Year- ");
-            int year = sc2.nextInt();
+            int year = sc3.nextInt();
             Movie movie=movi.service.TopMovie.topMoviesByYear(year,movieList,ratingList);
             System.out.println(movie.getMovieId()+" "+movie.getMovieTitle());
         }
 
         if(choice ==3) {
             System.out.print("Enter Genre id- \n");
-            System.out.println("0: unknown | 1: Action | 2: Adventure | 3: Animation |" +
-                    " 4: Children's | 5: Comedy | 6: Crime | 7:Documentary | 8:Drama | 9:Fantasy |\n" +
-                    "       10:Film-Noir | 11:Horror | 12:Musical | 13:Mystery | 14:Romance | 15:Sci-Fi |" +
-                    " 16:Thriller | 17:War | 18:Western |");
-            int gen = sc2.nextInt();
+            System.out.println("0: unknown | 1: Action | 2: Adventure | 3: Animation |" + " 4: Children's | 5: Comedy | 6: Crime | 7:Documentary | 8:Drama | 9:Fantasy |\n" + "       10:Film-Noir | 11:Horror | 12:Musical | 13:Mystery | 14:Romance | 15:Sci-Fi |" + " 16:Thriller | 17:War | 18:Western |");
+            int genreId = sc3.nextInt();
             System.out.print("Enter Year- ");
-            int year = sc2.nextInt();
+            int year = sc3.nextInt();
 
-            Movie movie=movi.service.TopMovie.topMovieByYearAndGenre(year,gen,movieList,ratingList);
+            Movie movie=movi.service.TopMovie.topMovieByYearAndGenre(year,genreId,movieList,ratingList);
             System.out.println(movie.getMovieId()+" "+movie.getMovieTitle());
         }
 
@@ -90,8 +81,8 @@ public class movii {
 
         if(choice == 8) {
             System.out.print("Enter User Id- ");
-            int us_id = sc2.nextInt();
-            List<Movie> top5Movies=movi.service.Top5MoviesByUserInterest.findtop5(us_id,ratingList,movieList);
+            int userId = sc3.nextInt();
+            List<Movie> top5Movies=movi.service.Top5MoviesByUserInterest.findTop5MoviesBasedOnUserInterest(userId,ratingList,movieList);
         }
 
     }

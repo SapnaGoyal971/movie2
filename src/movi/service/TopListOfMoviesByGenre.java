@@ -8,15 +8,15 @@ import java.util.*;
 
 public class TopListOfMoviesByGenre {
 
-    public static int userhasnotseen(int usid,int movieid, List<Rating> ratingList){
+    public static int userHasNotSeen(int userId,int movieId, List<Rating> ratingList){
         for(int i=0;i<ratingList.size();i++){
-            if(ratingList.get(i).getUserId()==usid && ratingList.get(i).getItemId()==movieid)
+            if(ratingList.get(i).getUserId()==userId && ratingList.get(i).getItemId()==movieId)
                 return 0;
         }
         return 1;
     }
 
-    public static List<Movie> top_list_by_genre(int genreId, int userId, List<Movie> movieList, List<Rating> ratingList) throws IOException {
+    public static List<Movie> topListOfMoviesByGenre(int genreId, int userId, List<Movie> movieList, List<Rating> ratingList) throws IOException {
         List<Integer> movieIdListContainingMoviesOfGivenGenre = new ArrayList<>();   //To get the list of movie id's with the given genre gen
         for (int i = 0; i < movieList.size(); i++) {
             if (movieList.get(i).getGenre().get(genreId) == 1)
@@ -38,19 +38,19 @@ public class TopListOfMoviesByGenre {
                 }
             }
             float avg= sum/(float)count; //this is average total rating of our movie j
-            if(userhasnotseen(userId,movieIdListContainingMoviesOfGivenGenre.get(j),ratingList)==1)
+            if(userHasNotSeen(userId,movieIdListContainingMoviesOfGivenGenre.get(j),ratingList)==1)
             mapMovieWithItsAverageRating.put(movieIdListContainingMoviesOfGivenGenre.get(j),avg);
         }
 
         mapMovieWithItsAverageRating = sortByValue(mapMovieWithItsAverageRating); //sort movies based on their average rating in descending order.
 
-            int coun=0; //In order to keep count of first 5 movies
+            int count=0; //In order to keep count of first 5 movies
         List<Movie> top5Movies=new ArrayList<>();
         for (Map.Entry<Integer, Float> en : mapMovieWithItsAverageRating.entrySet()) {
-            if(coun==5)
+            if(count==5)
                 break;
             top5Movies.add(movieList.get(en.getKey()));
-                    coun++;
+                    count++;
         }
         return top5Movies;
     }

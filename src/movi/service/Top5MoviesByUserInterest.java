@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Top5MoviesByUserInterest {
 
-    public static List<Movie> findtop5(int userId, List<Rating> ratingList, List<Movie> movieList) throws IOException {
+    public static List<Movie> findTop5MoviesBasedOnUserInterest(int userId, List<Rating> ratingList, List<Movie> movieList) throws IOException {
 
         List<Integer> movieListThatUserHasSeen=new ArrayList<>();//In order to find the list of movies that user has seen
 
@@ -51,7 +51,7 @@ public class Top5MoviesByUserInterest {
 //We have got the list of genres that a user likes from most favourite to least favourite
 
         //Now we will have to find top 5 movies based on user's favorite genres
-        List<Movie> top5Movies= TopListOfMoviesByGenre.top_list_by_genre(mapGenreRatingValueToRatingIndex.get(genreRatingListAccordingToUsersSeenMovies.get(0)),userId,movieList,ratingList); //To get top 5 movies based on user's most favourite genre.
+        List<Movie> top5Movies= TopListOfMoviesByGenre.topListOfMoviesByGenre(mapGenreRatingValueToRatingIndex.get(genreRatingListAccordingToUsersSeenMovies.get(0)),userId,movieList,ratingList); //To get top 5 movies based on user's most favourite genre.
         return top5Movies;
     }
 }
