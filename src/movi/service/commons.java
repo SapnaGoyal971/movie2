@@ -18,6 +18,7 @@ public class commons {
         return maxFrequencyId;
     }
 
+
     public static int findTopMovieFromRatingList(List<Rating> ratingList, List<Integer> movieList){
 
         int top_average_rating_movie_id=-1;
@@ -40,4 +41,18 @@ public class commons {
         }
         return top_average_rating_movie_id;
     }
+
+    public static int FindMaximumInList2(List<Long> integerList){
+        int maxFrequencyId=-1;
+        Long maxFrequency=Long.valueOf(0);
+        for(int i=0;i<integerList.size();i++){
+            //   System.out.println(integerList.get(i));
+            if(maxFrequency<integerList.get(i)){
+                maxFrequency=integerList.get(i);
+                maxFrequencyId=i;
+            }
+        }
+        return maxFrequencyId;
+    }
+
 }

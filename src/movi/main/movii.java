@@ -1,9 +1,6 @@
 package movi.main;
-import movi.*;
-import movi.dataclasses.Genre;
-import movi.dataclasses.Movie;
-import movi.dataclasses.Rating;
-import movi.dataclasses.User;
+import movi.dataclasses.*;
+import movi.service.HighestRatedGenre;
 import movi.service.MostWatchedGenreOrMovieOrMostActiveUser;
 import movi.utility.ParseFromFile;
 
@@ -46,13 +43,15 @@ public class movii {
                     "       10:Film-Noir | 11:Horror | 12:Musical | 13:Mystery | 14:Romance | 15:Sci-Fi |" +
                     " 16:Thriller | 17:War | 18:Western |");
             int gen = sc2.nextInt();
-             movi.service.TopMovie.topMovieByGenre(gen,movieList,ratingList);
+             Movie movie=movi.service.TopMovie.topMovieByGenre(gen,movieList,ratingList);
+             System.out.println(movie.getMovieId()+ " "+movie.getMovieTitle());
         }
 
         if(choice ==2) {
             System.out.print("Enter Year- ");
             int year = sc2.nextInt();
-            movi.service.TopMovie.topMoviesByYear(year,movieList,ratingList);
+            Movie movie=movi.service.TopMovie.topMoviesByYear(year,movieList,ratingList);
+            System.out.println(movie.getMovieId()+" "+movie.getMovieTitle());
         }
 
         if(choice ==3) {
@@ -65,7 +64,8 @@ public class movii {
             System.out.print("Enter Year- ");
             int year = sc2.nextInt();
 
-            movi.service.TopMovie.topMovieByYearAndGenre(year,gen,movieList,ratingList);
+            Movie movie=movi.service.TopMovie.topMovieByYearAndGenre(year,gen,movieList,ratingList);
+            System.out.println(movie.getMovieId()+" "+movie.getMovieTitle());
         }
 
         if(choice==4){
@@ -79,7 +79,7 @@ public class movii {
         }
 
         if(choice==6){
-            HighestRatedGenre.higestRatedGenre(ratingList,movieList,genreList);
+            HighestRatedGenre.highestRatedGenre(ratingList,movieList,genreList);
         }
 
         if(choice==7){

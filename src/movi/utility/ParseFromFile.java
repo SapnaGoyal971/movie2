@@ -1,9 +1,6 @@
 package movi.utility;
 
-import movi.dataclasses.Genre;
-import movi.dataclasses.Movie;
-import movi.dataclasses.Rating;
-import movi.dataclasses.User;
+import movi.dataclasses.*;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -71,6 +68,7 @@ public class ParseFromFile {
             movie.setIMDbURL(parts[4]);
          /*   System.out.println(parts[3]);
             System.out.println(string);*/
+
             List<Integer> genreList = new ArrayList<>();
             for(int i=0;i<19;i++){
                 genreList.add(Integer.parseInt(parts[i+5]));
@@ -101,5 +99,7 @@ public class ParseFromFile {
 
 
     }
+
+
 
 }

@@ -5,6 +5,7 @@ import movi.dataclasses.Rating;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class TopMovie {
@@ -23,7 +24,7 @@ public class TopMovie {
             int top_average_rating_movie_id_by_genre = commons.findTopMovieFromRatingList(ratingList, movieIdListContainingMoviesOfGivenGenre);
             return movieList.get(top_average_rating_movie_id_by_genre);
         }
-        catch (ArrayIndexOutOfBoundsException e) {
+        catch (IndexOutOfBoundsException e) {
             System.out.println("Wrong Genre Id");
             return null;
         }
@@ -54,6 +55,7 @@ public class TopMovie {
     }
 
     public static Movie topMovieByYearAndGenre(int year, int genreId,List<Movie> movieList, List<Rating> ratingList) throws IOException {
+
         try {
             List<Integer> movieIdListContainingMoviesOfGivenYearAndGenre = new ArrayList<>();   //To get the list of movie id's with the given genre gen
             for (int i = 0; i < movieList.size(); i++) {
@@ -72,7 +74,7 @@ public class TopMovie {
             return movieList.get(top_average_rating_movie_id_by_year);
         }
         catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("No movie released in this year or wrong Genre Id");
+            System.out.println("No movie released in this year");
             return null;
         }
     }
