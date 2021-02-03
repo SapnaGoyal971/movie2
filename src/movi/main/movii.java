@@ -46,13 +46,13 @@ public class movii {
                     "       10:Film-Noir | 11:Horror | 12:Musical | 13:Mystery | 14:Romance | 15:Sci-Fi |" +
                     " 16:Thriller | 17:War | 18:Western |");
             int gen = sc2.nextInt();
-             TopMovieByGenre.topMovieByGenre(gen,movieList,ratingList);
+             movi.service.TopMovie.topMovieByGenre(gen,movieList,ratingList);
         }
 
         if(choice ==2) {
             System.out.print("Enter Year- ");
             int year = sc2.nextInt();
-            TopMovieByYear.topMoviesByYear(year,movieList,ratingList);
+            movi.service.TopMovie.topMoviesByYear(year,movieList,ratingList);
         }
 
         if(choice ==3) {
@@ -65,7 +65,7 @@ public class movii {
             System.out.print("Enter Year- ");
             int year = sc2.nextInt();
 
-            TopMovieByYearAndGenre.topMovieByYearAndGenre(year,gen,movieList,ratingList);
+            movi.service.TopMovie.topMovieByYearAndGenre(year,gen,movieList,ratingList);
         }
 
         if(choice==4){
