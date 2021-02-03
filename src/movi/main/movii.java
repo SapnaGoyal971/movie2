@@ -79,7 +79,8 @@ public class movii {
         }
 
         if(choice==6){
-            HighestRatedGenre.highestRatedGenre(ratingList,movieList,genreList);
+            Genre genre=HighestRatedGenre.highestRatedGenre(ratingList,movieList,genreList);
+            System.out.println(genre.getGenrename());
         }
 
         if(choice==7){
@@ -90,7 +91,7 @@ public class movii {
         if(choice == 8) {
             System.out.print("Enter User Id- ");
             int us_id = sc2.nextInt();
-          //  Top5MoviesByUserInterest.findtop5(us_id);
+            List<Movie> top5Movies=movi.service.Top5MoviesByUserInterest.findtop5(us_id,ratingList,movieList);
         }
 
     }
