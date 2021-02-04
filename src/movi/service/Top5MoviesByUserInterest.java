@@ -6,11 +6,13 @@ import movi.service.TopListOfMoviesByGenre;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Top5MoviesByUserInterest {
 
-    public static List<Movie> findTop5MoviesBasedOnUserInterest(int userId, List<Rating> ratingList, List<Movie> movieList) throws IOException {
+    public static List<Movie> findTop5MoviesBasedOnUserInterest(int userId, List<Rating> ratingList, List<Movie> movieList, Logger LOGGER) throws IOException {
 
         List<Integer> movieListThatUserHasSeen=new ArrayList<>();//In order to find the list of movies that user has seen
 
@@ -46,12 +48,13 @@ public class Top5MoviesByUserInterest {
 
         Collections.sort(genreRatingListAccordingToUsersSeenMovies, Collections.reverseOrder());
 
+        LOGGER.log(Level.INFO, "Genre Rating List According to User's Seen Movies: "+String.valueOf(genreRatingListAccordingToUsersSeenMovies));
         /*for(int i=0;i<19;i++)
             System.out.println(genre.get(i));*/
 //We have got the list of genres that a user likes from most favourite to least favourite
 
         //Now we will have to find top 5 movies based on user's favorite genres
-        List<Movie> top5Movies= TopListOfMoviesByGenre.topListOfMoviesByGenre(mapGenreRatingValueToRatingIndex.get(genreRatingListAccordingToUsersSeenMovies.get(0)),userId,movieList,ratingList); //To get top 5 movies based on user's most favourite genre.
+        List<Movie> top5Movies= TopListOfMoviesByGenre.topListOfMoviesByGenre(mapGenreRatingValueToRatingIndex.get(genreRatingListAccordingToUsersSeenMovies.get(0)),userId,movieList,ratingList, LOGGER); //To get top 5 movies based on user's most favourite genre.
         return top5Movies;
     }
 }

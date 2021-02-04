@@ -5,6 +5,8 @@ import movi.dataclasses.Rating;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TopListOfMoviesByGenre {
 
@@ -16,13 +18,14 @@ public class TopListOfMoviesByGenre {
         return 1;
     }
 
-    public static List<Movie> topListOfMoviesByGenre(int genreId, int userId, List<Movie> movieList, List<Rating> ratingList) throws IOException {
+    public static List<Movie> topListOfMoviesByGenre(int genreId, int userId, List<Movie> movieList, List<Rating> ratingList, Logger LOGGER) throws IOException {
         List<Integer> movieIdListContainingMoviesOfGivenGenre = new ArrayList<>();   //To get the list of movie id's with the given genre gen
         for (int i = 0; i < movieList.size(); i++) {
             if (movieList.get(i).getGenre().get(genreId) == 1)
                 movieIdListContainingMoviesOfGivenGenre.add(movieList.get(i).getMovieId()); //Add that movie id to movie_ids whose genre is same as our genre gen
         }
 
+        LOGGER.log(Level.INFO, "Movie id's List Containing Movies of Given Genre: "+String.valueOf(movieIdListContainingMoviesOfGivenGenre));
        /* for(int i=0;i<movie_ids.size();i++){
             System.out.println(movie_ids.get(i));
         }*/
